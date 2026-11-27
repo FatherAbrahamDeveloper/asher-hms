@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Playfair Display", Georgia, Cambria, serif;
+
+  --color-ink-50: #f6f7f9;
+  --color-ink-100: #eceef2;
+  --color-ink-200: #d5d9e1;
+  --color-ink-300: #b0b7c4;
+  --color-ink-400: #848da0;
+  --color-ink-500: #636c80;
+  --color-ink-600: #4d5568;
+  --color-ink-700: #3e4555;
+  --color-ink-800: #252b38;
+  --color-ink-900: #161b26;
+  --color-ink-950: #0e121a;
+
+  --color-gold-50: #fbf8ef;
+  --color-gold-100: #f4ecd4;
+  --color-gold-200: #e8d6a4;
+  --color-gold-300: #dbbd72;
+  --color-gold-400: #cfa64d;
+  --color-gold-500: #b98c36;
+  --color-gold-600: #9a6f2b;
+  --color-gold-700: #7b5526;
+}
+
+html { -webkit-text-size-adjust: 100%; }
+body { background: #f7f6f3; color: var(--color-ink-900); font-family: var(--font-sans); }
+.font-display { font-family: var(--font-display); }
+
+/* Form controls */
+.input {
+  @apply block w-full rounded-lg border border-ink-200 bg-white px-3 py-2 text-sm text-ink-900 shadow-sm placeholder:text-ink-400
+    focus:border-gold-500 focus:outline-none focus:ring-2 focus:ring-gold-200 disabled:bg-ink-50 disabled:text-ink-500;
+}
+.label { @apply mb-1 block text-xs font-semibold uppercase tracking-wide text-ink-600; }
+.btn { @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-60; }
+.btn-primary { @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-60 bg-ink-900 text-white hover:bg-ink-800; }
+.btn-gold { @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-60 bg-gold-500 text-white hover:bg-gold-600; }
+.btn-secondary { @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-60 border border-ink-200 bg-white text-ink-800 hover:bg-ink-50; }
+.btn-danger { @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-60 bg-red-600 text-white hover:bg-red-700; }
+.btn-ghost { @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-60 text-ink-700 hover:bg-ink-100; }
+.btn-sm { @apply px-3 py-1.5 text-xs; }
+.card { @apply rounded-xl border border-ink-100 bg-white shadow-sm; }
+.table { @apply w-full text-left text-sm; }
+.table th { @apply whitespace-nowrap border-b border-ink-100 bg-ink-50 px-3 py-2 text-xs font-semibold uppercase tracking-wide text-ink-500; }
+.table td { @apply border-b border-ink-100 px-3 py-2.5 align-top; }
+.table tbody tr:hover { @apply bg-ink-50/60; }
+.link { @apply font-medium text-gold-700 hover:text-gold-600 hover:underline; }
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: white; }
+  .print-area { box-shadow: none !important; border: none !important; }
+}

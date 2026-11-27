@@ -1,0 +1,16 @@
+# Free-tier helper: wakes the Render server and runs background jobs (expire unpaid holds, reminders, emails).
+# Needs repository secrets API_URL (e.g. https://asher-hms-api.onrender.com) and CRON_SECRET (same value as on Render).
+# GitHub may delay scheduled runs; cron-job.org (see DEPLOYMENT.md) is the main pinger, this is the backup.
+name: keep-alive
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Run background jobs
+        run: |
+          curl -fsS --max-time 120 -X POST -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" "${{ secrets.API_URL }}/api/cron" || echo "Server did not answer (it may be waking up)."

@@ -1,0 +1,19 @@
+{
+  "name": "Asher Hotel and Suites",
+  "short_name": "Asher Hotel",
+  "description": "Book rooms, manage your stay, and run hotel operations.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#161b26",
+  "theme_color": "#161b26",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Staff portal", "url": "/manage" },
+    { "name": "My bookings", "url": "/account/reservations" }
+  ]
+}
