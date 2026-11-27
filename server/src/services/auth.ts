@@ -46,6 +46,9 @@ export async function authenticate(emailRaw: string, password: string, portal: "
         link: "/manage/audit?module=security", dedupeKey: `lockout:${email}:${since.toISOString().slice(0, 13)}`,
       });
     }
+    if (user && user.type !== portal && (await verifyPassword(password, user.passwordHash))) {
+      return { ok: false, message: user.type === "STAFF" ? "This is a staff account. Sign in at /manage/login instead." : "This is a guest account. Sign in on the main website instead." };
+    }
     return { ok: false, message: !valid ? "Incorrect email or password." : "This account has been deactivated. Contact the hotel administrator." };
   }
 
